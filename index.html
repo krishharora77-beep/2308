@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Delivery</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="hearts">
+  <span style="left:8%;animation-delay:0s;">♥</span>
+  <span style="left:18%;animation-delay:2s;">♥</span>
+  <span style="left:30%;animation-delay:4s;">♥</span>
+  <span style="left:50%;animation-delay:1s;">♥</span>
+  <span style="left:66%;animation-delay:5s;">♥</span>
+  <span style="left:78%;animation-delay:3s;">♥</span>
+  <span style="left:90%;animation-delay:6s;">♥</span>
+</div>
+
+<div class="card" id="card">
+
+<div class="small">PRIVATE DELIVERY</div>
+
+<div class="envelope" id="env">💌</div>
+
+<h1>Authorized Access Required</h1>
+
+<p class="sub">A surprise has been prepared only for you.</p>
+
+<input type="password" id="pass" placeholder="Enter Passcode">
+
+<p class="hint" id="hint">Hint: What makes today special?</p>
+
+<button onclick="checkPass()">Unlock 💌</button>
+
+<div id="status"></div>
+
+<p class="footer">Secured by someone who cares 🙂</p>
+
+</div>
+
+<script>
+let tries = 0;
+const realPass = "1608"; // change password here
+
+function checkPass() {
+    const pass = document.getElementById("pass").value;
+    const card = document.getElementById("card");
+    const status = document.getElementById("status");
+    const hint = document.getElementById("hint");
+    const env = document.getElementById("env");
+
+    if(pass === realPass){
+        status.innerHTML = "Access Verified 💌<br>Preparing your surprise...";
+        status.style.color = "#8dff8d";
+        env.innerHTML = "📩";
+
+        setTimeout(() => {
+            window.location.href = "wp2.html";
+        }, 2200);
+
+    } else {
+        tries++;
+        card.classList.add("shake");
+        setTimeout(() => card.classList.remove("shake"), 400);
+
+        const msgs = [
+            "Not quite 😏",
+            "Cute try... wrong code 💀",
+            "Still locked 👀"
+        ];
+
+        const hints = [
+            "Hint: What makes today special?",
+            "Hint: Today's iconic date...",
+            "Hint: This day belongs to whom? 😏"
+        ];
+
+        status.innerHTML = msgs[Math.min(tries - 1, 2)];
+        status.style.color = "#ff9e9e";
+
+        hint.innerHTML = hints[Math.min(tries, 2)];
+    }
+}
+</script>
+
+</body>
+</html>
