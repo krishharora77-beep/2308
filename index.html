@@ -37,13 +37,13 @@
 
 <div id="status"></div>
 
-<p class="footer">Secured by someone who cares 🙂</p>
+<p class="footer">Secured by someone who cares...</p>
 
 </div>
 
 <script>
 let tries = 0;
-const realPass = "1608"; // change password here
+const realPass = "2308"; // change password here
 
 function checkPass() {
     const pass = document.getElementById("pass").value;
@@ -67,15 +67,15 @@ function checkPass() {
         setTimeout(() => card.classList.remove("shake"), 400);
 
         const msgs = [
-            "Not quite 😏",
-            "Cute try... wrong code 💀",
-            "Still locked 👀"
+            "How Can U Forget???",
+            "Cute try... wrong code...",
+            "Still locked...Give It A Final Hit...GO ON..."
         ];
 
         const hints = [
-            "Hint: What makes today special?",
-            "Hint: Today's iconic date...",
-            "Hint: This day belongs to whom? 😏"
+            "Hint: Today's iconic Date...?",
+            "Hint: Today's iconic Date...?",
+            "Hint: Today's iconic Date...?"
         ];
 
         status.innerHTML = msgs[Math.min(tries - 1, 2)];
