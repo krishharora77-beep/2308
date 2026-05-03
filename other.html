@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Delivery</title>
+
+<link rel="stylesheet" href="other.css">
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="card">
+
+    <div class="label">PRIVATE DELIVERY</div>
+
+    <h1>Oops 😏</h1>
+
+    <p class="main">This delivery belongs to someone else.</p>
+
+    <p class="sub">But nice curiosity though 💗</p>
+
+    <button onclick="closePage()">Close Gently 💌</button>
+
+    <div id="teddy" class="teddy">🐻 bye bye</div>
+
+</div>
+
+<script>
+function closePage() {
+    document.body.classList.add("fade");
+    setTimeout(() => {
+        window.location.href = "index.html"; // change if needed
+    }, 1000);
+}
+
+// teddy reveal after 2 sec
+setTimeout(() => {
+    document.getElementById("teddy").classList.add("show");
+}, 2000);
+</script>
+
+</body>
+</html>
