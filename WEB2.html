@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuteness Meter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="particles"></div>
+
+<div class="card">
+
+    <h1>Scanning Cuteness Levels...</h1>
+    <p class="subtext" id="subtext">
+        Please wait while the system is processesing...
+    </p>
+
+    <div class="pet">🐻💗</div>
+
+    <div class="progress-box">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+
+    <div class="percent" id="percent">0%</div>
+
+    <div class="result" id="result">Collecting charm...</div>
+
+    <button id="nextBtn" onclick="nextPage()">Continue Anyway 💌</button>
+
+</div>
+
+<script>
+let progress = 0;
+let bar = document.getElementById("bar");
+let percent = document.getElementById("percent");
+let result = document.getElementById("result");
+let btn = document.getElementById("nextBtn");
+
+let lines = [
+    "Collecting charm...",
+    "Calibrating smile...",
+    "Verifying sweetness...",
+    "Results look suspiciously adorable...",
+    "Almost done...",
+    "Warning: Levels rising fast...!!!"
+];
+
+let interval = setInterval(runMeter, 70);
+
+function runMeter(){
+
+    if(progress < 100){
+        progress++;
+    }
+    else if(progress === 100){
+        result.innerHTML = "Hmm... something feels unusual 😏";
+        setTimeout(()=>{ progress = 121; },1200);
+    }
+
+    if(progress <= 121){
+        bar.style.width = progress + "%";
+        percent.innerHTML = progress + "%";
+    }
+
+    if(progress < 100){
+        if(progress % 18 === 0){
+            result.innerHTML = lines[Math.floor(Math.random()*lines.length)];
+        }
+    }
+
+    if(progress > 100){
+        result.innerHTML = "ERROR: Too cute to measure 💀💗";
+        document.body.classList.add("flash");
+        btn.style.display = "block";
+        clearInterval(interval);
+    }
+}
+
+function nextPage(){
+    window.location.href = "wp3.html";
+}
+</script>
+
+</body>
+</html>
