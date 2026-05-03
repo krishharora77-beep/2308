@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Reveal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="wp3">
+
+<div class="hearts">
+  <span style="left:10%;animation-delay:0s;">✦</span>
+  <span style="left:22%;animation-delay:2s;">♥</span>
+  <span style="left:40%;animation-delay:4s;">✦</span>
+  <span style="left:58%;animation-delay:1s;">♥</span>
+  <span style="left:75%;animation-delay:5s;">✦</span>
+  <span style="left:90%;animation-delay:3s;">♥</span>
+</div>
+
+<div class="card">
+
+<p class="small-title">SPECIAL MOMENT</p>
+
+<div class="pet reveal-pet">🐱🎀</div>
+
+<h1 class="reveal-line1">16 years ago today...</h1>
+
+<p class="reveal-line2">
+something beautiful entered this world.
+</p>
+
+<button class="reveal-btn" onclick="nextPage()">
+Continue the Surprise 💌
+</button>
+
+</div>
+
+<script>
+setTimeout(() => {
+    document.querySelector(".reveal-line1").classList.add("show");
+}, 500);
+
+setTimeout(() => {
+    document.querySelector(".reveal-line2").classList.add("show");
+}, 1500);
+
+setTimeout(() => {
+    document.querySelector(".reveal-btn").classList.add("show");
+}, 2500);
+
+function nextPage(){
+    window.location.href = "wp4.html";
+}
+</script>
+
+</body>
+</html>
