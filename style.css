@@ -145,9 +145,127 @@ button:hover{
     animation:shake .4s;
 }
 
-@keyframes shake{
+@keyframes shake{*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ffd6ea,#ffc0cb,#ffeaf4,#f8d7ff);
+    background-size:300% 300%;
+    animation:bgmove 10s ease infinite;
+}
+
+@keyframes bgmove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    width:360px;
+    max-width:92%;
+    text-align:center;
+    padding:32px 25px;
+    border-radius:28px;
+    background:rgba(255,255,255,.45);
+    backdrop-filter:blur(12px);
+    box-shadow:0 12px 30px rgba(255,105,180,.18);
+}
+
+h1{
+    font-size:28px;
+    color:#ff2f8a;
+    margin-bottom:10px;
+}
+
+.subtext{
+    font-size:14px;
+    color:#6b4b5d;
+    margin-bottom:20px;
+}
+
+.pet{
+    font-size:62px;
+    margin-bottom:18px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+.progress-box{
+    width:100%;
+    height:18px;
+    background:#ffffff90;
+    border-radius:30px;
+    overflow:hidden;
+    margin-bottom:12px;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff4fa3,#ff8fc7);
+    transition:width .08s linear;
+}
+
+.percent{
+    font-size:18px;
+    font-weight:bold;
+    color:#ff2f8a;
+    margin-bottom:10px;
+}
+
+.result{
+    min-height:30px;
+    font-size:15px;
+    color:#5e4150;
+    margin-bottom:18px;
+}
+
+button{
+    display:none;
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:35px;
+    background:linear-gradient(90deg,#ff4fa3,#ff8fc7);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(255,79,163,.35);
+}
+
+.flash{
+    animation:flashbg .5s 2;
+}
+
+@keyframes flashbg{
+    0%{filter:brightness(1);}
+    50%{filter:brightness(1.15);}
+    100%{filter:brightness(1);}
+}
     0%,100%{transform:translateX(0);}
     25%{transform:translateX(-6px);}
     50%{transform:translateX(6px);}
     75%{transform:translateX(-6px);}
 }
+
+
