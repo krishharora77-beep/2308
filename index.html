@@ -6,7 +6,6 @@
 <title>Private Delivery</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="hearts">
@@ -25,63 +24,85 @@
 
 <div class="envelope" id="env">💌</div>
 
-<h1>Authorized Access Required</h1>
+<h1>Identity Verification</h1>
 
-<p class="sub">A surprise has been prepared only for you.</p>
+<p class="sub">A surprise has been prepared for someone special.</p>
+
+<input type="text" id="name" placeholder="Enter Your Name">
 
 <input type="password" id="pass" placeholder="Enter Passcode">
 
 <p class="hint" id="hint">Hint: What makes today special?</p>
 
-<button onclick="checkPass()">Unlock 💌</button>
+<button onclick="verifyUser()">Continue 💌</button>
 
 <div id="status"></div>
 
-<p class="footer">Secured by someone who cares...</p>
+<p class="footer">Secured by someone who cares 🙂</p>
 
 </div>
 
 <script>
+const realPass = "1608"; // change password
+const allowedNames = [
+  "taresha",
+  "t",
+  "Taresha",
+  "T"
+];
+
 let tries = 0;
-const realPass = "2308"; // change password here
 
-function checkPass() {
-    const pass = document.getElementById("pass").value;
-    const card = document.getElementById("card");
-    const status = document.getElementById("status");
-    const hint = document.getElementById("hint");
-    const env = document.getElementById("env");
+function verifyUser(){
 
-    if(pass === realPass){
-        status.innerHTML = "Access Verified 💌<br>Preparing your surprise...";
-        status.style.color = "#8dff8d";
+    let userName = document.getElementById("name").value.trim().toLowerCase();
+    let pass = document.getElementById("pass").value.trim();
+    let status = document.getElementById("status");
+    let card = document.getElementById("card");
+    let env = document.getElementById("env");
+    let hint = document.getElementById("hint");
+
+    if(allowedNames.includes(userName) && pass === realPass){
+
         env.innerHTML = "📩";
+        status.innerHTML = "Identity Confirmed 💌<br>Welcome...";
+        status.style.color = "#8dff8d";
 
-        setTimeout(() => {
+        setTimeout(()=>{
             window.location.href = "wp2.html";
-        }, 2200);
+        },2200);
 
-    } else {
-        tries++;
-        card.classList.add("shake");
-        setTimeout(() => card.classList.remove("shake"), 400);
+    }else if(!allowedNames.includes(userName)){
 
-        const msgs = [
-            "How Can U Forget???",
-            "Cute try... wrong code...",
-            "Still locked...Give It A Final Hit...GO ON..."
-        ];
-
-        const hints = [
-            "Hint: Today's iconic Date...?",
-            "Hint: Today's iconic Date...?",
-            "Hint: Today's iconic Date...?"
-        ];
-
-        status.innerHTML = msgs[Math.min(tries - 1, 2)];
+        env.innerHTML = "📪";
+        status.innerHTML = "Oops 😏<br>This delivery belongs to someone else.";
         status.style.color = "#ff9e9e";
 
-        hint.innerHTML = hints[Math.min(tries, 2)];
+        setTimeout(()=>{
+            window.location.href = "other.html";
+        },2200);
+
+    }else{
+
+        tries++;
+        card.classList.add("shake");
+        setTimeout(()=>card.classList.remove("shake"),400);
+
+        const hints = [
+          "Hint: What makes today special?",
+          "Hint: Today's iconic date...",
+          "Hint: This day belongs to whom? 😏"
+        ];
+
+        const msgs = [
+          "Wrong code 😭",
+          "Cute try... still wrong 💀",
+          "Access denied 👀"
+        ];
+
+        hint.innerHTML = hints[Math.min(tries,2)];
+        status.innerHTML = msgs[Math.min(tries-1,2)];
+        status.style.color = "#ff9e9e";
     }
 }
 </script>
