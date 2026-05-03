@@ -1,3 +1,6 @@
+/* ===================================================
+   GLOBAL RESET
+=================================================== */
 *{
     margin:0;
     padding:0;
@@ -6,22 +9,57 @@
 }
 
 body{
-    height:100vh;
+    min-height:100vh;
     overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(135deg,#050505,#1a0010,#ff4fa3,#0a0a0a);
     background-size:300% 300%;
     animation:bgmove 12s ease infinite;
 }
 
+/* animated gradient */
 @keyframes bgmove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
+/* ===================================================
+   COMMON CARD / BUTTON / TEXT
+=================================================== */
+.card{
+    width:360px;
+    max-width:92%;
+    padding:32px 26px;
+    text-align:center;
+    border-radius:28px;
+    color:white;
+    backdrop-filter:blur(14px);
+    position:relative;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(90deg,#ff4fa3,#ff8fc7);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(255,79,163,.35);
+}
+
+/* ===================================================
+   FLOATING HEARTS / PARTICLES
+=================================================== */
 .hearts span{
     position:absolute;
     bottom:-50px;
@@ -43,25 +81,25 @@ body{
     }
 }
 
-.card{
-    width:360px;
-    max-width:92%;
-    padding:35px 28px;
-    text-align:center;
-    border-radius:28px;
+/* ===================================================
+   WP1 - PRIVATE DELIVERY (index.html)
+   Add class="wp1" to body
+=================================================== */
+body.wp1{
+    background:linear-gradient(135deg,#050505,#1a0010,#ff4fa3,#0a0a0a);
+}
+
+body.wp1 .card{
     background:rgba(255,255,255,.08);
-    backdrop-filter:blur(14px);
     border:1px solid rgba(255,255,255,.12);
     box-shadow:0 0 35px rgba(255,79,163,.18);
-    color:white;
-    position:relative;
 }
 
 .small{
     letter-spacing:4px;
     font-size:12px;
     color:#ff9bcf;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .envelope{
@@ -76,7 +114,7 @@ body{
     50%{transform:translateY(-8px);}
 }
 
-h1{
+body.wp1 h1{
     font-size:26px;
     margin-bottom:10px;
 }
@@ -84,7 +122,7 @@ h1{
 .sub{
     font-size:14px;
     color:#f3d6e7;
-    margin-bottom:22px;
+    margin-bottom:18px;
 }
 
 input{
@@ -110,28 +148,10 @@ input::placeholder{
     margin-bottom:18px;
 }
 
-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:40px;
-    background:linear-gradient(90deg,#ff4fa3,#ff8fc7);
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(255,79,163,.45);
-}
-
 #status{
     margin-top:16px;
     font-size:14px;
-    min-height:22px;
+    min-height:24px;
 }
 
 .footer{
@@ -141,46 +161,33 @@ button:hover{
     opacity:.8;
 }
 
+/* shake animation */
 .shake{
     animation:shake .4s;
 }
 
-@keyframes shake{*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+@keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-6px);}
+    50%{transform:translateX(6px);}
+    75%{transform:translateX(-6px);}
 }
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
+/* ===================================================
+   WP2 - CUTENESS METER (web2.html)
+   Add class="wp2" to body
+=================================================== */
+body.wp2{
     background:linear-gradient(135deg,#ffd6ea,#ffc0cb,#ffeaf4,#f8d7ff);
-    background-size:300% 300%;
-    animation:bgmove 10s ease infinite;
 }
 
-@keyframes bgmove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-.card{
-    width:360px;
-    max-width:92%;
-    text-align:center;
-    padding:32px 25px;
-    border-radius:28px;
+body.wp2 .card{
     background:rgba(255,255,255,.45);
-    backdrop-filter:blur(12px);
+    color:#333;
     box-shadow:0 12px 30px rgba(255,105,180,.18);
 }
 
-h1{
+body.wp2 h1{
     font-size:28px;
     color:#ff2f8a;
     margin-bottom:10px;
@@ -189,7 +196,7 @@ h1{
 .subtext{
     font-size:14px;
     color:#6b4b5d;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .pet{
@@ -234,25 +241,7 @@ h1{
     margin-bottom:18px;
 }
 
-button{
-    display:none;
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:35px;
-    background:linear-gradient(90deg,#ff4fa3,#ff8fc7);
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(255,79,163,.35);
-}
-
+/* flash effect after overload */
 .flash{
     animation:flashbg .5s 2;
 }
@@ -262,10 +251,3 @@ button:hover{
     50%{filter:brightness(1.15);}
     100%{filter:brightness(1);}
 }
-    0%,100%{transform:translateX(0);}
-    25%{transform:translateX(-6px);}
-    50%{transform:translateX(6px);}
-    75%{transform:translateX(-6px);}
-}
-
-
