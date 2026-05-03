@@ -251,3 +251,68 @@ body.wp2 h1{
     50%{filter:brightness(1.15);}
     100%{filter:brightness(1);}
 }
+
+/* ===================================================
+   WP3 - BIRTHDAY REVEAL
+   Add this below your existing style.css
+=================================================== */
+
+body.wp3{
+    background:linear-gradient(135deg,#fff0f7,#ffd6ea,#f6ddff,#ffeaf4);
+}
+
+body.wp3 .card{
+    background:rgba(255,255,255,.48);
+    color:#333;
+    box-shadow:0 12px 30px rgba(255,105,180,.18);
+}
+
+/* top small label */
+.small-title{
+    letter-spacing:4px;
+    font-size:12px;
+    color:#ff6fae;
+    margin-bottom:18px;
+}
+
+/* gif / emoji pet */
+.reveal-pet{
+    font-size:64px;
+    margin-bottom:18px;
+    animation:bounce 2s infinite;
+}
+
+/* heading */
+body.wp3 h1{
+    font-size:30px;
+    color:#ff2f8a;
+    margin-bottom:14px;
+}
+
+/* hidden before animation */
+.reveal-line1,
+.reveal-line2,
+.reveal-btn{
+    opacity:0;
+    transform:translateY(14px);
+    transition:.8s ease;
+}
+
+/* paragraph */
+.reveal-line2{
+    font-size:17px;
+    color:#6b4b5d;
+    margin-bottom:24px;
+    line-height:1.5;
+}
+
+/* button spacing */
+.reveal-btn{
+    margin-top:6px;
+}
+
+/* show animation */
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
