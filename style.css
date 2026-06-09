@@ -535,6 +535,25 @@ body.wp4{
 /* ================================= */
 /* WP5 MEMORY BOOK */
 /* ================================= */
+.memory-wpage{
+    margin:0;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff9acb,
+    #ffc8e6,
+    #d8b4ff,
+    #8a2be2,
+    #1f0f3a
+    );
+
+    background-size:400% 400%;
+
+    animation:gradientMove 15s ease infinite;
+
+    font-family:'Poppins',sans-serif;
+}
 
 .memory-book{
     width:100%;
