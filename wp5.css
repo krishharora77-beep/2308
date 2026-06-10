@@ -1,0 +1,168 @@
+/* ========================= */
+/* WP5 MEMORY BOOK */
+/* ========================= */
+
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+
+```
+background:linear-gradient(
+    135deg,
+    #ff9acb,
+    #ffc8e6,
+    #d8b4ff,
+    #8a2be2,
+    #1f0f3a
+);
+
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+```
+
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.memory-book{
+position:relative;
+width:100%;
+min-height:100vh;
+padding:80px 5%;
+box-sizing:border-box;
+}
+
+.memory-book::before{
+content:"MEMORIES";
+
+```
+position:absolute;
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:12rem;
+font-weight:900;
+
+color:white;
+opacity:.05;
+
+pointer-events:none;
+```
+
+}
+
+.spiral{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-bottom:35px;
+}
+
+.spiral span{
+width:22px;
+height:22px;
+
+```
+border:4px solid white;
+border-radius:50%;
+```
+
+}
+
+.memory-title{
+text-align:center;
+color:white;
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.memory-subtitle{
+text-align:center;
+color:#ffe4f3;
+margin-bottom:60px;
+font-size:1.15rem;
+}
+
+.memory-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:60px;
+}
+
+.memory-page{
+width:340px;
+
+```
+background:white;
+
+border-radius:18px;
+
+padding:14px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+transition:.45s;
+```
+
+}
+
+.memory-page img{
+width:100%;
+display:block;
+border-radius:12px;
+}
+
+.memory-page p{
+text-align:center;
+font-weight:600;
+margin-top:12px;
+color:#444;
+}
+
+.left-tilt{
+transform:rotate(-5deg);
+}
+
+.right-tilt{
+transform:rotate(5deg);
+}
+
+.memory-page:hover{
+transform:rotate(0deg) scale(1.08);
+box-shadow:0 25px 55px rgba(255,180,220,.55);
+}
+
+.memory-next{
+text-align:center;
+margin-top:90px;
+}
+
+.memory-next a{
+text-decoration:none;
+
+```
+color:white;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(10px);
+
+padding:18px 40px;
+
+border-radius:999px;
+
+transition:.3s;
+```
+
+}
+
+.memory-next a:hover{
+background:rgba(255,255,255,.3);
+}
