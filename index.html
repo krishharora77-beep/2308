@@ -6,8 +6,118 @@
 <title>Private Delivery</title>
 <link rel="icon" type="image/png" href="favimage.png">
 <link rel="stylesheet" href="style.css">
+  
+<script>
+
+const check=document.getElementById("readyCheck");
+const continueBtn=document.getElementById("continueBtn");
+const popup=document.getElementById("privacyPopup");
+const laterBtn=document.getElementById("laterBtn");
+
+check.addEventListener("change",()=>{
+
+    continueBtn.disabled=!check.checked;
+
+});
+
+continueBtn.addEventListener("click",()=>{
+
+    popup.style.display="none";
+
+});
+
+laterBtn.addEventListener("click",()=>{
+
+    document.body.innerHTML=`
+
+    <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        background:#111;
+        color:white;
+        font-family:Segoe UI;
+        text-align:center;
+        padding:25px;
+    ">
+
+        <h1>💜 No worries!</h1>
+
+        <p>
+            This little memory book isn't going anywhere.
+        </p>
+
+        <p>
+            Come back whenever you have a little privacy.
+        </p>
+
+        <button onclick="location.reload()"
+        style="
+            margin-top:25px;
+            padding:14px 30px;
+            border:none;
+            border-radius:999px;
+            background:#d63384;
+            color:white;
+            cursor:pointer;
+        ">
+            Come Back Later
+        </button>
+
+    </div>
+
+    `;
+
+});
+
+  </script>
 </head>
 <body class="wp1">
+  <!-- Privacy Popup -->
+<div id="privacyPopup" class="popup-overlay">
+
+    <div class="popup-box">
+
+        <h2>💜 One Small Request</h2>
+
+        <p>
+            Before we begin...
+        </p>
+
+        <p>
+            Some parts of this website contain personal memories.
+        </p>
+
+        <p>
+            If possible, I'd love for you to experience them when you're by yourself or have a little privacy.
+        </p>
+
+        <p>
+            There's absolutely no hurry—you can always come back later.
+        </p>
+
+        <label class="checkbox">
+            <input type="checkbox" id="readyCheck">
+            I'm in a comfortable place to continue.
+        </label>
+
+        <div class="popup-buttons">
+
+            <button id="continueBtn" disabled>
+                💜 Continue
+            </button>
+
+            <button id="laterBtn">
+                🤍 I'll Come Back Later
+            </button>
+
+        </div>
+
+    </div>
+
+  </div>
 
 <div class="hearts">
   <span style="left:8%;animation-delay:0s;">♥</span>
