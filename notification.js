@@ -17,6 +17,8 @@ function showPrivacyNotification(){
     const continueBtn=document.getElementById("continuePrivacy");
 
     overlay.style.display="flex";
+   
+    overlay.style.pointerEvents="auto";
 
     checkbox.checked=false;
 
