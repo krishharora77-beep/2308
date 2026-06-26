@@ -70,7 +70,7 @@ function verifyUser(){
         status.style.color = "#8dff8d";
 
         setTimeout(()=>{
-            window.location.href = "WEB2.html";
+            showPrivacyNotification();
         },2200);
 
     }else if(!allowedNames.includes(userName)){
