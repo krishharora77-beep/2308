@@ -6,6 +6,8 @@
 <title>Private Delivery</title>
 <link rel="icon" type="image/png" href="favimage.png">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="notification.css">
 </head>
   
 <body class="wp1">
@@ -43,7 +45,63 @@
 
 </div>
 
+<!-- Android 16 Privacy Notification -->
+<div id="privacyOverlay">
+
+    <div id="privacyNotification">
+
+        <div class="notify-top">
+            <div class="notify-icon">💜</div>
+
+            <div class="notify-title">
+                One Small Request
+            </div>
+        </div>
+
+        <div class="notify-text">
+
+            Before continuing...
+
+            <br><br>
+
+            If possible, please experience this website when you're by yourself or have a little privacy.
+
+            <br><br>
+
+            This is simply because some pages contain personal memories, and I'd rather you enjoy them comfortably.
+
+        </div>
+
+        <label class="notify-check">
+
+            <input type="checkbox" id="privacyCheck">
+
+            I'm alone and ready to continue.
+
+        </label>
+
+        <div class="notify-buttons">
+
+            <button id="continuePrivacy" disabled>
+
+                Continue
+
+            </button>
+
+            <button id="laterPrivacy">
+
+                Not Right Now
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script>
+  <script src="notification.js">
 const realPass = "2308"; // change password
 const allowedNames = [
   "tarisha saxena",
