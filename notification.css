@@ -23,28 +23,38 @@
 
     width:min(92%,520px);
 
-    margin-top:-350px;
+    background:rgba(28,28,32,.45);
 
-    background:rgba(28,28,32,.82);
+    border:1px solid rgba(255,255,255,.18);
 
-    backdrop-filter:blur(30px);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
 
-    border-radius:0 0 28px 28px;
+    border-radius:32px;
 
-    padding:22px;
+    padding:28px;
 
     color:white;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.18);
 
-    transition:.55s cubic-bezier(.22,1,.36,1);
+    transform:scale(.88);
 
-    border:1px solid rgba(255,255,255,.12);
+    transition:.35s ease;
+}
+
+#privacyOverlay.show{
+
+    opacity:1;
+
 }
 
 #privacyNotification.show{
 
-    margin-top:0;
+    transform:scale(1);
+
 }
 
 .notify-top{
