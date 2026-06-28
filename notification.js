@@ -17,18 +17,15 @@ function showPrivacyNotification(){
     const continueBtn=document.getElementById("continuePrivacy");
 
     overlay.style.display="flex";
-   
-    overlay.style.pointerEvents="auto";
+   overlay.style.display="flex";
 
-    checkbox.checked=false;
+requestAnimationFrame(()=>{
 
-    continueBtn.disabled=true;
+overlay.classList.add("show");
 
-    requestAnimationFrame(()=>{
+notification.classList.add("show");
 
-        notification.classList.add("show");
-
-    });
+});
 
 }
 
