@@ -1,148 +1,139 @@
-// ===============================
-// MUSIC PLAYER
-// ===============================
+document.addEventListener("DOMContentLoaded", function () {
 
-const audio = new Audio("music/TuHaiKahaan.mp3");
+    // Prevent duplicate player
+    if (document.getElementById("musicFab")) return;
 
-audio.loop = true;
-audio.volume = 0.12;
+    // Create audio
+    const audio = new Audio("music/TuHaiKahaan.mp3");
+    audio.loop = true;
+    audio.volume = 0.12;
 
-document.body.insertAdjacentHTML("beforeend", `
+    // Player HTML
+    document.body.insertAdjacentHTML("beforeend", `
+        <div id="musicFab">🎵</div>
 
-<div id="musicFab">🎵</div>
+        <div id="musicOverlay">
+            <div id="musicSheet">
 
-<div id="musicOverlay">
+                <div class="musicHandle"></div>
 
-    <div id="musicSheet">
+                <div class="musicArt">🎵</div>
 
-        <div class="musicHandle"></div>
+                <div class="musicTitle">Background Melody</div>
 
-        <div class="musicArt">🎵</div>
+                <div class="musicArtist">Tu Hai Kahan • AUR</div>
 
-        <div class="musicTitle">Background Melody</div>
+                <div class="musicControls">
+                    <button id="playPause">▶</button>
+                </div>
 
-        <div class="musicArtist">Tu Hai Kahan • AUR</div>
+                <input id="progress" type="range" value="0" min="0" max="100">
 
-        <div class="musicControls">
+                <div class="timeRow">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalTime">0:00</span>
+                </div>
 
-            <button id="playPause">▶</button>
+                <div class="volumeLabel">Volume</div>
 
+                <input id="volume" type="range" min="0" max="100" value="12">
+
+                <button class="closeMusic">Close</button>
+
+            </div>
         </div>
+    `);
 
-        <input type="range" id="progress" value="0" min="0" max="100">
+    const fab = document.getElementById("musicFab");
+    const overlay = document.getElementById("musicOverlay");
+    const sheet = document.getElementById("musicSheet");
+    const playPause = document.getElementById("playPause");
+    const progress = document.getElementById("progress");
+    const volume = document.getElementById("volume");
+    const closeBtn = document.querySelector(".closeMusic");
 
-        <div class="timeRow">
+    fab.addEventListener("click", function () {
+        overlay.style.display = "flex";
+        setTimeout(() => {
+            sheet.classList.add("open");
+        }, 10);
+    });
 
-            <span id="currentTime">0:00</span>
+    closeBtn.addEventListener("click", function () {
+        sheet.classList.remove("open");
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 350);
+    });
 
-            <span id="totalTime">0:00</span>
+    playPause.addEventListener("click", function () {
 
-        </div>
+        if (audio.paused) {
 
-        <div class="volumeLabel">
+            audio.play();
 
-            Volume
+            playPause.innerHTML = "⏸";
 
-        </div>
+            fab.classList.add("playing");
 
-        <input type="range" id="volume" min="0" max="100" value="12">
+        } else {
 
-        <button class="closeMusic">Close</button>
+            audio.pause();
 
-    </div>
+            playPause.innerHTML = "▶";
 
-</div>
+            fab.classList.remove("playing");
 
-`);
-
-const fab = document.getElementById("musicFab");
-const overlay = document.getElementById("musicOverlay");
-const sheet = document.getElementById("musicSheet");
-const playPause = document.getElementById("playPause");
-const progress = document.getElementById("progress");
-const volume = document.getElementById("volume");
-const closeBtn = document.querySelector(".closeMusic");
-
-fab.onclick = () => {
-
-    overlay.style.display = "flex";
-
-    requestAnimationFrame(() => {
-
-        sheet.classList.add("open");
+        }
 
     });
 
-};
+    volume.addEventListener("input", function () {
 
-closeBtn.onclick = () => {
+        audio.volume = this.value / 100;
 
-    sheet.classList.remove("open");
+    });
 
-    setTimeout(() => {
+    audio.addEventListener("loadedmetadata", function () {
 
-        overlay.style.display = "none";
+        document.getElementById("totalTime").innerHTML = format(audio.duration);
 
-    }, 350);
+    });
 
-};
+    audio.addEventListener("timeupdate", function () {
 
-playPause.onclick = () => {
+        if (audio.duration) {
 
-    if (audio.paused) {
+            progress.value = (audio.currentTime / audio.duration) * 100;
 
-        audio.play();
+        }
 
-        playPause.innerHTML = "⏸";
+        document.getElementById("currentTime").innerHTML = format(audio.currentTime);
 
-        fab.classList.add("playing");
+    });
 
-    } else {
+    progress.addEventListener("input", function () {
 
-        audio.pause();
+        if (audio.duration) {
 
-        playPause.innerHTML = "▶";
+            audio.currentTime = (this.value / 100) * audio.duration;
 
-        fab.classList.remove("playing");
+        }
+
+    });
+
+    function format(sec) {
+
+        if (isNaN(sec)) return "0:00";
+
+        let m = Math.floor(sec / 60);
+
+        let s = Math.floor(sec % 60);
+
+        if (s < 10) s = "0" + s;
+
+        return m + ":" + s;
 
     }
 
-};
-
-volume.oninput = () => {
-
-    audio.volume = volume.value / 100;
-
-};
-
-audio.onloadedmetadata = () => {
-
-    document.getElementById("totalTime").innerHTML = format(audio.duration);
-
-};
-
-audio.ontimeupdate = () => {
-
-    progress.value = (audio.currentTime / audio.duration) * 100 || 0;
-
-    document.getElementById("currentTime").innerHTML = format(audio.currentTime);
-
-};
-
-progress.oninput = () => {
-
-    audio.currentTime = (progress.value / 100) * audio.duration;
-
-};
-
-function format(sec) {
-
-    let m = Math.floor(sec / 60);
-
-    let s = Math.floor(sec % 60);
-
-    if (s < 10) s = "0" + s;
-
-    return m + ":" + s;
-
-}
+});
