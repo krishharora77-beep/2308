@@ -64,6 +64,10 @@ requestAnimationFrame(()=>{
 
 overlay.classList.add("show");
 
+const card=overlay.querySelector(".ending-card");
+
+card.classList.add("show");
+
 });
 
 });
