@@ -36,21 +36,11 @@ box-shadow:0 15px 30px rgba(255,94,168,.5);
 
 .ending-overlay{
 
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.45);
-
-backdrop-filter:blur(12px);
-
-display:none;
+display:flex;
 
 justify-content:center;
 
-align-items:flex-start;
-
-z-index:999999;
+align-items:center;
 
 }
 
@@ -64,7 +54,7 @@ display:flex;
 
 width:min(92%,420px);
 
-margin-top:-350px;
+margin-top:0px;
 
 background:rgba(255,255,255,.15);
 
@@ -188,23 +178,17 @@ color:white;
 
 0%{
 
-transform:translateY(-450px) scale(.90);
+transform:translateY(-300px) scale(.92);
 
 opacity:0;
 
 }
 
-60%{
+70%{
 
-transform:translateY(25px) scale(1.02);
+transform:translateY(20px) scale(1.02);
 
 opacity:1;
-
-}
-
-80%{
-
-transform:translateY(-8px);
 
 }
 
