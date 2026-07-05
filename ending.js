@@ -30,7 +30,7 @@ I'd love to know what you felt.
 
 <div class="emoji-row">
 
-<span class="emoji">🥺</span>
+<span class="emoji"></span>
 
 <span class="emoji">🙂</span>
 
@@ -38,7 +38,7 @@ I'd love to know what you felt.
 
 <span class="emoji">😄</span>
 
-<span class="emoji">🥹</span>
+<span class="emoji">😍</span>
 
 <span class="emoji">❤️</span>
 
