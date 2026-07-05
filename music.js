@@ -242,8 +242,6 @@ const current=document.getElementById("currentTime");
 
 const total=document.getElementById("totalTime");
 
-const audio=window.music.audio;
-
 
 
 playBtn.onclick=async()=>{
