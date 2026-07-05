@@ -1,45 +1,93 @@
-/* ==========================================
-   MUSIC PLAYER V2
-   PART 1 - CORE ENGINE
-========================================== */
+/*=================================================
 
-document.addEventListener("DOMContentLoaded", () => {
+MUSIC PLAYER V4
+MODULE 1
+ENGINE
 
-    if(document.getElementById("musicFab")) return;
+=================================================*/
 
-    const STORAGE_KEY = "birthday_music_state";
+document.addEventListener("DOMContentLoaded",()=>{
 
-    const audio = new Audio("music/TuHaiKahaan.mp3");
+if(window.__MusicLoaded)return;
 
-    audio.loop = true;
+window.__MusicLoaded=true;
 
-    audio.preload = "auto";
+const STORAGE="birthday_music";
 
-    let saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+const audio=new Audio("music/TuHaiKahaan.mp3");
 
-    if(saved.volume !== undefined){
+audio.loop=true;
 
-        audio.volume = saved.volume;
+audio.preload="auto";
 
-    }
+const state=JSON.parse(
 
-    else{
+localStorage.getItem(STORAGE)||"{}"
 
-        audio.volume = 0.12;
+);
 
-    }
+audio.volume=
 
-    if(saved.time){
+state.volume??
 
-        audio.currentTime = saved.time;
+0.12;
 
-    }
+function save(){
 
-    let playerHTML = `
+localStorage.setItem(
+
+STORAGE,
+
+JSON.stringify({
+
+time:audio.currentTime,
+
+volume:audio.volume,
+
+playing:!audio.paused
+
+})
+
+);
+
+}
+
+function format(sec){
+
+if(isNaN(sec))return"0:00";
+
+let m=Math.floor(sec/60);
+
+let s=Math.floor(sec%60);
+
+return`${m}:${String(s).padStart(2,"0")}`;
+
+}
+
+window.music={
+
+audio,
+
+save,
+
+format,
+
+state
+
+};
+
+   /*=================================================
+
+MODULE 2
+PLAYER UI
+
+=================================================*/
+
+const playerHTML=`
 
 <div id="musicFab">
 
-🎧
+🎵
 
 </div>
 
@@ -51,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="musicArt">
 
-🎧
+🎵
 
 </div>
 
@@ -112,7 +160,7 @@ id="volume"
 type="range"
 min="0"
 max="100"
-value="${Math.round(audio.volume*100)}"
+value="12"
 >
 
 <button class="closeMusic">
@@ -127,274 +175,246 @@ Close
 
 `;
 
-    document.body.insertAdjacentHTML("beforeend",playerHTML);
+document.body.insertAdjacentHTML(
 
-    const fab=document.getElementById("musicFab");
+"beforeend",
 
-    const overlay=document.getElementById("musicOverlay");
+playerHTML
 
-    const sheet=document.getElementById("musicSheet");
+);
 
-    const playPause=document.getElementById("playPause");
+const fab=document.getElementById("musicFab");
 
-    const progress=document.getElementById("progress");
+const overlay=document.getElementById("musicOverlay");
 
-    const volume=document.getElementById("volume");
+const sheet=document.getElementById("musicSheet");
 
-    const current=document.getElementById("currentTime");
+const closeBtn=document.querySelector(".closeMusic");
 
-    const total=document.getElementById("totalTime");
+fab.onclick=()=>{
 
-    const closeBtn=document.querySelector(".closeMusic");
+overlay.style.display="flex";
 
-    function format(seconds){
+requestAnimationFrame(()=>{
 
-        if(isNaN(seconds)) return "0:00";
-
-        let m=Math.floor(seconds/60);
-
-        let s=Math.floor(seconds%60);
-
-        if(s<10){
-
-            s="0"+s;
-
-        }
-
-        return m+":"+s;
-
-    }
-
-    function saveState(){
-
-        localStorage.setItem(STORAGE_KEY,JSON.stringify({
-
-            time:audio.currentTime,
-
-            volume:audio.volume,
-
-            playing:!audio.paused
-
-        }));
-
-    }
-
-``
-    /* ==========================================
-   PART 2 - PLAYER CONTROLS
-========================================== */
-
-    fab.onclick = () => {
-
-        overlay.style.display = "flex";
-
-        requestAnimationFrame(() => {
-
-            sheet.classList.add("open");
-
-        });
-
-    };
-
-    closeBtn.onclick = () => {
-
-        sheet.classList.remove("open");
-
-        setTimeout(() => {
-
-            overlay.style.display = "none";
-
-        },350);
-
-    };
-
-    playPause.onclick = async () => {
-
-        if(audio.paused){
-
-            try{
-
-                await audio.play();
-
-                playPause.innerHTML="⏸";
-
-                fab.classList.add("playing");
-
-                saveState();
-
-            }
-
-            catch(err){
-
-                console.log(err);
-
-            }
-
-        }
-
-        else{
-
-            audio.pause();
-
-            playPause.innerHTML="▶";
-
-            fab.classList.remove("playing");
-
-            saveState();
-
-        }
-
-    };
-
-    volume.oninput=()=>{
-
-        audio.volume=volume.value/100;
-
-        saveState();
-
-    };
-
-    audio.onloadedmetadata=()=>{
-
-        total.innerHTML=format(audio.duration);
-
-    };
-
-    audio.ontimeupdate=()=>{
-
-        current.innerHTML=format(audio.currentTime);
-
-        if(audio.duration){
-
-            progress.value=(audio.currentTime/audio.duration)*100;
-
-        }
-
-        saveState();
-
-    };
-
-    progress.oninput=()=>{
-
-        if(audio.duration){
-
-            audio.currentTime=(progress.value/100)*audio.duration;
-
-        }
-
-    };
-/* ==========================================
-   PART 3 - RESUME + FADE
-========================================== */
-
-    // Restore playback position
-    audio.addEventListener("loadedmetadata", () => {
-
-        if(saved.time){
-
-            audio.currentTime = saved.time;
-
-        }
-
-        total.innerHTML = format(audio.duration);
-
-        // If the song was playing on the previous page,
-        // continue automatically.
-
-        if(saved.playing){
-
-            audio.play().then(()=>{
-
-                playPause.innerHTML="⏸";
-
-                fab.classList.add("playing");
-
-                fadeIn();
-
-            }).catch(()=>{
-
-                // Browser blocked autoplay.
-                // It will start after the next user interaction.
-
-            });
-
-        }
-
-    });
-
-    // Smooth fade-in
-    function fadeIn(){
-
-        let target = audio.volume;
-
-        audio.volume = 0;
-
-        let step = target / 20;
-
-        let interval = setInterval(()=>{
-
-            audio.volume += step;
-
-            if(audio.volume >= target){
-
-                audio.volume = target;
-
-                clearInterval(interval);
-
-            }
-
-        },200);
-
-    }
-
-    // Save every second
-
-    setInterval(()=>{
-
-        saveState();
-
-    },1000);
-
-    // Save before
-                          /* ==========================================
-   PART 4 - TEMPORARY END
-   (FOR TESTING ONLY)
-========================================== */
-
-// Keep UI in sync when playback ends
-audio.addEventListener("ended", () => {
-
-    playPause.innerHTML = "▶";
-
-    fab.classList.remove("playing");
-
-    saveState();
+sheet.classList.add("open");
 
 });
 
-// If browser blocks autoplay, the player will
-// simply wait for the user to press Play.
-// (The final version will hook into your privacy
-// notification to start automatically.)
+};
 
-// Save state whenever the page is hidden.
-document.addEventListener("visibilitychange", () => {
+closeBtn.onclick=()=>{
 
-    if (document.hidden) {
+sheet.classList.remove("open");
 
-        saveState();
+setTimeout(()=>{
 
-    }
+overlay.style.display="none";
+
+},350);
+
+};
+
+window.music.ui={
+
+fab,
+
+overlay,
+
+sheet
+
+};
+
+   /*=================================================
+
+MODULE 3
+AUDIO ENGINE
+
+=================================================*/
+
+const playBtn=document.getElementById("playPause");
+
+const progress=document.getElementById("progress");
+
+const volume=document.getElementById("volume");
+
+const current=document.getElementById("currentTime");
+
+const total=document.getElementById("totalTime");
+
+const audio=window.music.audio;
+
+
+
+playBtn.onclick=async()=>{
+
+if(audio.paused){
+
+try{
+
+await audio.play();
+
+playBtn.innerHTML="⏸";
+
+fab.classList.add("playing");
+
+window.music.save();
+
+}
+
+catch(err){
+
+console.log(err);
+
+}
+
+}
+
+else{
+
+audio.pause();
+
+playBtn.innerHTML="▶";
+
+fab.classList.remove("playing");
+
+window.music.save();
+
+}
+
+};
+
+
+
+volume.value=Math.round(audio.volume*100);
+
+
+
+volume.oninput=()=>{
+
+audio.volume=volume.value/100;
+
+window.music.save();
+
+};
+
+
+
+audio.addEventListener("loadedmetadata",()=>{
+
+total.innerHTML=window.music.format(audio.duration);
 
 });
 
-// Final save before closing.
-window.addEventListener("beforeunload", () => {
 
-    saveState();
+
+audio.addEventListener("timeupdate",()=>{
+
+current.innerHTML=
+
+window.music.format(audio.currentTime);
+
+if(audio.duration){
+
+progress.value=
+
+(audio.currentTime/audio.duration)*100;
+
+}
+
+window.music.save();
 
 });
 
-// ===== END OF MUSIC PLAYER =====
+
+
+progress.oninput=()=>{
+
+if(audio.duration){
+
+audio.currentTime=
+
+(progress.value/100)*audio.duration;
+
+}
+
+};
+
+   /*=================================================
+
+MODULE 4
+RESUME ENGINE
+
+=================================================*/
+
+if(window.music.state.time!==undefined){
+
+audio.addEventListener("loadedmetadata",()=>{
+
+if(!isNaN(window.music.state.time)){
+
+audio.currentTime=
+
+window.music.state.time;
+
+}
+
+});
+
+}
+
+
+
+if(window.music.state.playing){
+
+audio.addEventListener("loadedmetadata",async()=>{
+
+try{
+
+await audio.play();
+
+playBtn.innerHTML="⏸";
+
+fab.classList.add("playing");
+
+}
+
+catch(e){
+
+console.log("Autoplay prevented");
+
+}
+
+});
+
+}
+
+
+
+setInterval(()=>{
+
+window.music.save();
+
+},1000);
+
+
+
+window.addEventListener("beforeunload",()=>{
+
+window.music.save();
+
+});
+
+
+
+document.addEventListener("visibilitychange",()=>{
+
+if(document.hidden){
+
+window.music.save();
+
+}
+
+});
 
 });
