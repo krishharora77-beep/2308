@@ -14,7 +14,7 @@ document.body.insertAdjacentHTML("beforeend",`
 
 <h3>Music Player</h3>
 
-<p>Skeleton Working ✅</p>
+<p>Skeleton Working...</p>
 
 <button id="closeMusic">Close</button>
 
