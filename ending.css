@@ -36,7 +36,7 @@ box-shadow:0 15px 30px rgba(255,94,168,.5);
 
 .ending-overlay{
 
-display:flex;
+display:flex-end;
 
 justify-content:center;
 
@@ -64,7 +64,7 @@ border:1px solid rgba(255,255,255,.25);
 
 border-radius:28px;
 
-padding:24px;
+padding:16px;
 
 transition: none;
 
