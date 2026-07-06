@@ -36,7 +36,7 @@ box-shadow:0 15px 30px rgba(255,94,168,.5);
 
 .ending-overlay{
 
-display:flex-end;
+display:flex;
 
 justify-content:center;
 
@@ -54,7 +54,7 @@ display:flex;
 
 width:min(92%,420px);
 
-margin-top:200px;
+margin-top:-300px;
 
 background:rgba(255,255,255,.15);
 
