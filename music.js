@@ -1,59 +1,125 @@
-document.addEventListener("DOMContentLoaded",()=>{
+const musicBtn = document.getElementById("musicBtn");
+const musicPopup = document.getElementById("musicPopup");
+const closePlayer = document.getElementById("closePlayer");
 
-if(document.getElementById("musicFab")) return;
+const playBtn = document.getElementById("playBtn");
 
-document.body.insertAdjacentHTML("beforeend",`
+const audio = document.getElementById("audio");
 
-<div id="musicFab">🎵</div>
+const progress = document.getElementById("progress");
 
-<div id="musicOverlay" style="display:none;">
+const currentTime = document.getElementById("currentTime");
 
-<div id="musicSheet">
+const totalTime = document.getElementById("totalTime");
 
-<div class="musicHandle"></div>
 
-<h3>Music Player</h3>
 
-<p>Skeleton Working...</p>
+/* =========================
+   OPEN / CLOSE
+========================= */
 
-<button id="closeMusic">Close</button>
+musicBtn.addEventListener("click", () => {
 
-</div>
-
-</div>
-
-`);
-
-const fab=document.getElementById("musicFab");
-
-const overlay=document.getElementById("musicOverlay");
-
-const sheet=document.getElementById("musicSheet");
-
-const close=document.getElementById("closeMusic");
-
-fab.onclick=()=>{
-
-overlay.style.display="flex";
-
-requestAnimationFrame(()=>{
-
-sheet.classList.add("open");
+    musicPopup.classList.add("show");
 
 });
 
-};
+closePlayer.addEventListener("click", () => {
 
-close.onclick=()=>{
-
-sheet.classList.remove("open");
-
-setTimeout(()=>{
-
-overlay.style.display="none";
-
-},300);
-
-};
+    musicPopup.classList.remove("show");
 
 });
+
+
+
+/* =========================
+   PLAY / PAUSE
+========================= */
+
+playBtn.addEventListener("click", () => {
+
+    if (audio.paused) {
+
+        audio.play();
+
+        playBtn.innerHTML = "⏸";
+
+    } else {
+
+        audio.pause();
+
+        playBtn.innerHTML = "▶";
+
+    }
+
+});
+
+
+
+/* =========================
+   SONG LOADED
+========================= */
+
+audio.addEventListener("loadedmetadata", () => {
+
+    progress.max = Math.floor(audio.duration);
+
+    totalTime.textContent = formatTime(audio.duration);
+
+});
+
+
+
+/* =========================
+   UPDATE PROGRESS
+========================= */
+
+audio.addEventListener("timeupdate", () => {
+
+    progress.value = audio.currentTime;
+
+    currentTime.textContent = formatTime(audio.currentTime);
+
+});
+
+
+
+/* =========================
+   SEEK
+========================= */
+
+progress.addEventListener("input", () => {
+
+    audio.currentTime = progress.value;
+
+});
+
+
+
+/* =========================
+   SONG ENDED
+========================= */
+
+audio.addEventListener("ended", () => {
+
+    playBtn.innerHTML = "▶";
+
+    progress.value = 0;
+
+});
+
+
+
+/* =========================
+   TIME FORMAT
+========================= */
+
+function formatTime(seconds) {
+
+    const min = Math.floor(seconds / 60);
+
+    const sec = Math.floor(seconds % 60);
+
+    return `${min}:${sec.toString().padStart(2, "0")}`;
+
+}
