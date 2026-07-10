@@ -1,3 +1,4 @@
+alert("New Music.js Loaded...")
 const musicBtn = document.getElementById("musicBtn");
 const musicPopup = document.getElementById("musicPopup");
 const closePlayer = document.getElementById("closePlayer");
