@@ -96,6 +96,56 @@
         </a>
     </div>
 
+    <button class="music-btn" id="musicBtn">
+    🎧
+    </button>
+
+    <div class="music-popup" id="musicPopup">
+
+    <div class="close-player" id="closePlayer">
+        ✕
+    </div>
+
+    <div class="song-title">
+        Tu Hai Kahaan
+    </div>
+
+    <div class="play-btn" id="playBtn">
+        ▶
+    </div>
+
+    <input
+        type="range"
+        class="progress"
+        id="progress"
+        value="0"
+        min="0"
+        max="100"
+    >
+
+    <div class="time-row">
+
+        <span id="currentTime">
+            0:00
+        </span>
+
+        <span id="totalTime">
+            0:00
+        </span>
+
+    </div>
+
+</div>
+
+<audio id="audio">
+
+    <source
+        src="tuhaikahaan.mp3"
+        type="audio/mpeg"
+    >
+
+    </audio>
+
 </section>
 <script src="music.js"></script>
 </body>
