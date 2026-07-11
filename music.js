@@ -6,27 +6,6 @@ const playBtn = document.getElementById("playBtn");
 
 const audio = document.getElementById("audio");
 
-audio.addEventListener("loadmetadata", () => {
-const savedTime = sessionStorage.getItem("musicTime");
-
-if (savedTime) {
-
-    audio.currentTime = parseFloat(savedTime);
-
-}
-
-const wasPlaying = sessionStorage.getItem("musicPlaying");
-
-if (wasPlaying === "true") {
-
-    audio.play();
-
-    playBtn.innerHTML = "⏸";
-
-}
-   
-});
-
 audio.volume= 0.35s;
 
 audio.addEventListener("timeupdate", () => {
