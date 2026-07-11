@@ -74,7 +74,7 @@
 <audio id="audio" src="TuHaiKahaan.mp3" preload="metadata">
     </audio>
 <script>
-let progress = 0;
+let barProgress = 0;
 let bar = document.getElementById("bar");
 let percent = document.getElementById("percent");
 let result = document.getElementById("result");
@@ -93,26 +93,26 @@ let interval = setInterval(runMeter, 70);
 
 function runMeter(){
 
-    if(progress < 100){
-        progress++;
+    if(barProgress < 100){
+        barProgress++;
     }
-    else if(progress === 100){
+    else if(barProgress === 100){
         result.innerHTML = "Hmm... something feels unusual 😏";
-        setTimeout(()=>{ progress = 121; },1200);
+        setTimeout(()=>{ barProgress = 121; },1200);
     }
 
-    if(progress <= 121){
-        bar.style.width = progress + "%";
-        percent.innerHTML = progress + "%";
+    if(barProgress <= 121){
+        bar.style.width = barProgress + "%";
+        percent.innerHTML = barProgress + "%";
     }
 
-    if(progress < 100){
-        if(progress % 18 === 0){
+    if(barProgress < 100){
+        if(barProgress % 18 === 0){
             result.innerHTML = lines[Math.floor(Math.random()*lines.length)];
         }
     }
 
-    if(progress > 100){
+    if(barProgress > 100){
         result.innerHTML = "ERROR: Too cute to measure 💀💗";
         document.body.classList.add("flash");
         btn.style.display = "block";
