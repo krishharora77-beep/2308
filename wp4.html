@@ -39,6 +39,50 @@
       this surprise was waiting for you 😏
     </p>
 
+    <button class="music-btn" id="musicBtn">
+    🎧
+    </button>
+
+<div class="music-popup" id="musicPopup">
+
+    <div class="close-player" id="closePlayer">
+        ✕
+    </div>
+
+    <div class="song-title">
+        Tu Hai Kahaan
+    </div>
+
+    <div class="play-btn" id="playBtn">
+        ▶
+    </div>
+
+    <input
+        type="range"
+        class="progress"
+        id="progress"
+        value="0"
+        min="0"
+        max="100"
+    >
+
+    <div class="time-row">
+
+        <span id="currentTime">
+            0:00
+        </span>
+
+        <span id="totalTime">
+            0:00
+        </span>
+
+    </div>
+
+</div>
+
+<audio id="audio" src="TuHaiKahaan.mp3" preload="auto">
+    </audio>
+
     <a href="WP5.html">
       <button class="wp4-btn">
         Open Your Memories 💌
