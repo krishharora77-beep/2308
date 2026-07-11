@@ -6,6 +6,41 @@ const playBtn = document.getElementById("playBtn");
 
 const audio = document.getElementById("audio");
 
+audio.addEventListener("loadmetadata", () => {
+const savedTime = sessionStorage.getItem("musicTime");
+
+if (savedTime) {
+
+    audio.currentTime = parseFloat(savedTime);
+
+}
+
+const wasPlaying = sessionStorage.getItem("musicPlaying");
+
+if (wasPlaying === "true") {
+
+    audio.play();
+
+    playBtn.innerHTML = "⏸";
+
+}
+   
+});
+
+audio.volume= 0.35s;
+
+audio.addEventListener("timeupdate", () => {
+
+    sessionStorage.setItem("musicTime", audio.currentTime);
+
+});
+audio.play();
+
+sessionStorage.setItem("musicPlaying", "true");
+audio.pause();
+
+sessionStorage.setItem("musicPlaying", "false");
+
 const progress = document.getElementById("progress");
 
 const currentTime = document.getElementById("currentTime");
