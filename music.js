@@ -5,25 +5,12 @@ const closePlayer = document.getElementById("closePlayer");
 const playBtn = document.getElementById("playBtn");
 
 const audio = document.getElementById("audio");
-
-audio.volume= 0.35s;
-
-audio.addEventListener("timeupdate", () => {
-
-    sessionStorage.setItem("musicTime", audio.currentTime);
-
-});
-audio.play();
-
-sessionStorage.setItem("musicPlaying", "true");
-audio.pause();
-
-sessionStorage.setItem("musicPlaying", "false");
+audio.volume = 0.35;
+audio.load();
 
 const progress = document.getElementById("progress");
 
 const currentTime = document.getElementById("currentTime");
-
 const totalTime = document.getElementById("totalTime");
 
 
@@ -58,11 +45,15 @@ playBtn.addEventListener("click", () => {
 
         playBtn.innerHTML = "⏸";
 
+        sessionStorage.setItem("musicPlaying", "true");
+
     } else {
 
         audio.pause();
 
         playBtn.innerHTML = "▶";
+
+        sessionStorage.setItem("musicPlaying", "false");
 
     }
 
@@ -80,6 +71,22 @@ audio.addEventListener("loadedmetadata", () => {
 
     totalTime.textContent = formatTime(audio.duration);
 
+    const savedTime = sessionStorage.getItem("musicTime");
+
+    if (savedTime) {
+
+        audio.currentTime = parseFloat(savedTime);
+
+    }
+
+    if (sessionStorage.getItem("musicPlaying") === "true") {
+
+        audio.play();
+
+        playBtn.innerHTML = "⏸";
+
+    }
+
 });
 
 
@@ -93,6 +100,8 @@ audio.addEventListener("timeupdate", () => {
     progress.value = audio.currentTime;
 
     currentTime.textContent = formatTime(audio.currentTime);
+
+    sessionStorage.setItem("musicTime", audio.currentTime);
 
 });
 
@@ -119,6 +128,10 @@ audio.addEventListener("ended", () => {
     playBtn.innerHTML = "▶";
 
     progress.value = 0;
+
+    sessionStorage.setItem("musicPlaying", "false");
+
+    sessionStorage.setItem("musicTime", "0");
 
 });
 
