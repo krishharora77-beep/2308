@@ -150,3 +150,9 @@ function formatTime(seconds) {
     return `${min}:${sec.toString().padStart(2, "0")}`;
 
 }
+
+window.addEventListener("beforeunload", () => {
+    sessionStorage.setItem("musicTime", audio.currentTime);
+    sessionStorage.setItem("musicPlaying", !audio.paused);
+});
+
