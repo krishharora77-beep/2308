@@ -6,6 +6,7 @@ const playBtn = document.getElementById("playBtn");
 
 const audio = document.getElementById("audio");
 audio.volume = 0.35;
+audio.load()
 
 const progress = document.getElementById("progress");
 
