@@ -1,3 +1,4 @@
+const musicHint=document.getElementById("musicHint");
 const musicBtn = document.getElementById("musicBtn");
 const musicPopup = document.getElementById("musicPopup");
 const closePlayer = document.getElementById("closePlayer");
@@ -39,6 +40,8 @@ closePlayer.addEventListener("click", () => {
 
 playBtn.addEventListener("click", () => {
 
+   musicHint.classList.remove("show");
+   
     if (audio.paused) {
 
         audio.play();
@@ -156,3 +159,18 @@ window.addEventListener("beforeunload", () => {
     sessionStorage.setItem("musicPlaying", !audio.paused);
 });
 
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        musicHint.classList.add("show");
+
+    },700);
+
+    setTimeout(()=>{
+
+        musicHint.classList.remove("show");
+
+    },7000);
+
+});
