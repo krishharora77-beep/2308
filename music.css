@@ -8,7 +8,9 @@ position:fixed;
 
 right:22px;
 
-top:22px;
+top:22px; !important
+
+bottom: auto;
 
 width:58px;
 height:58px;
