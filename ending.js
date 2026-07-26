@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="ending-text">
         Before you leave...
         <br><br>
-        I'd love to know what you felt.
+        I'd love to know what you felt...
     </div>
 
     <div class="emoji-row">
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <textarea
         class="message-box"
-        placeholder="Write anything..."
+        placeholder="Something About this....maybe- What Memory You Liked The Most..."
     ></textarea>
 
     <button class="send-btn">
