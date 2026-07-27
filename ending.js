@@ -116,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             sendBtn.innerHTML = "💜 I got your words.";
-
+            document.getElementById("dedicationCard").style.display = "block";
+            }
         });
 
     });
