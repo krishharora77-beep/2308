@@ -1,103 +1,35 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Aakhiri Saans</title>
-
-<link rel="stylesheet" href="AakhiriSaans.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakhiri Saans</title>
+    <link rel="stylesheet" href="AakhiriSaans.css">
+    <!-- Using a handwritten Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
-
 <body>
 
-
-<div class="depth-bg"></div>
-
-
-<div class="page">
-
-
-    <div class="titleBox">
-
-        <h1 class="title">
-
-            AAKHIRI SAANS
-
-        </h1>
-
-        <p class="subtitle">
-
-            I couldn't have said it
-            any other way.
-
-        </p>
-
+    <!-- Initial state: A simple trigger to start the music smoothly -->
+    <div id="start-screen" class="start-screen">
+        <button id="start-btn">Listen...</button>
     </div>
 
-
-
-    <div class="lyricsContainer">
-
-        <div id="prevLine" class="lyrics previous">
-
-            ...
-
+    <!-- The Main Canvas -->
+    <div id="final-canvas" class="final-canvas hidden">
+        <div class="header">
+            <h1>AAKHIRI SAANS</h1>
+            <p class="subtitle">"I couldn't have said it any other way."</p>
         </div>
 
-        <div id="currentLine" class="lyrics current">
-
-            Press Play
-
+        <div class="lyrics-container" id="lyrics-container">
+            <!-- Lyrics will be injected here by JavaScript -->
         </div>
-
-        <div id="nextLine" class="lyrics next">
-
-            ...
-
-        </div>
-
     </div>
 
+    <!-- Replace with your actual audio file path -->
+    <audio id="final-audio" src="AakhiriSaans.mp3" preload="auto"></audio>
 
-
-    <div class="player">
-
-        <button id="playPause">
-
-            ▶
-
-        </button>
-
-    </div>
-
-
-
-    <audio id="audio">
-
-        <source
-
-        src="AakhiriSaans.mp3"
-
-        type="audio/mpeg">
-
-    </audio>
-
-
-</div>
-
-
-<script src="lyrics.js"></script>
-
-<script src="AakhiriSaans.js"></script>
-
-
+    <script src="aakhiri-saans.js"></script>
 </body>
-
 </html>
