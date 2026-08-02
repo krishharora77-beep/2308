@@ -7,100 +7,71 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
 
         const overlay = document.createElement("div");
-
         overlay.className = "ending-overlay";
-
         overlay.innerHTML = `
-
 <div class="ending-card">
-
     <div class="ending-title">
         💜 One Last Thought...
     </div>
-
     <div class="ending-text">
         Before you leave...
         <br><br>
         I'd love to know what you felt...
     </div>
-
     <div class="emoji-row">
-
         <span class="emoji">🥺</span>
         <span class="emoji">🙂</span>
         <span class="emoji">😊</span>
         <span class="emoji">😄</span>
         <span class="emoji">😍</span>
         <span class="emoji">❤️</span>
-
     </div>
-
     <textarea
         class="message-box"
         placeholder="Something About this....maybe- What Memory You Liked The Most..."
     ></textarea>
-
     <button class="send-btn">
         💜 Send
     </button>
-
 </div>
-
 `;
 
         document.body.appendChild(overlay);
 
         requestAnimationFrame(() => {
-
             overlay.classList.add("show");
-
             const card = overlay.querySelector(".ending-card");
-
             card.classList.add("show");
-
         });
 
         /* ===========================
            Emoji Selection
         =========================== */
-
         const emojis = overlay.querySelectorAll(".emoji");
-
         emojis.forEach(emoji => {
-
             emoji.addEventListener("click", () => {
-
                 emojis.forEach(e => e.classList.remove("selected"));
-
                 emoji.classList.add("selected");
-
             });
-
         });
 
         /* ===========================
-           Send Button
+           Send Button & Transition
         =========================== */
-
         const sendBtn = overlay.querySelector(".send-btn");
 
         sendBtn.addEventListener("click", async () => {
-
-            const reaction =
-                overlay.querySelector(".emoji.selected")?.textContent || "";
-
-            const message =
-                overlay.querySelector(".message-box").value;
+            const reaction = overlay.querySelector(".emoji.selected")?.textContent || "";
+            const message = overlay.querySelector(".message-box").value;
 
             const formData = new FormData();
-
             formData.append("entry.1330814782", reaction);
             formData.append("entry.1787595112", message);
 
             sendBtn.disabled = true;
             sendBtn.innerHTML = "💜 Sending...";
 
-           try {
+            try {
                 await fetch(
                     "https://docs.google.com/forms/d/e/1FAIpQLSfT1tu8oXAPjRlPyV94So5ZfC9MApWZWUoUDC763Tgmvivt5A/formResponse",
                     {
@@ -110,21 +81,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 );
 
-                // The Magic Connection: Acknowledge and Redirect
-                sendBtn.innerHTML = "I got your words...";
+                // The text changes to acknowledge the message
+                sendBtn.innerHTML = "💜 I got your words...";
                 
+                // Waits 2 seconds, then transports them to the final page
                 setTimeout(() => {
-                    // Fades to the final page after 2 seconds
                     window.location.href = "AakhiriSaans.html"; 
                 }, 2000);
 
             } catch (e) {
                 console.log(e);
                 sendBtn.innerHTML = "Something went wrong, but I still got the feeling.";
+                
+                // Even if the form fails, we still move them to the final page
+                setTimeout(() => {
+                    window.location.href = "AakhiriSaans.html"; 
+                }, 2000);
             }
-        }
-        });
-
+        }); 
+        // NOTE: The extra } that was causing the crash was removed from right here!
     });
-
 });
