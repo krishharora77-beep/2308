@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { time: 60.6, text: "Aakhiri saans ho, to bhi tera naam loon..." },
 
         //Music 1
-        { time: 66.1, text: "..."}
+        { time: 66.1, text: "..."},
         
         // Verse 2
         { time: 77.9, text: "Socha saja loon ghar ko tu jo kal rahegi sang mein..." },
