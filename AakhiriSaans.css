@@ -1,0 +1,124 @@
+:root {
+    /* Replace this with your exact royal pink hex code if different */
+    --royal-pink: #d17a9e; 
+    --bg-black: #050505;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--royal-pink); /* Starts pink */
+    color: white;
+    font-family: 'Caveat', cursive; /* Handwritten font */
+    overflow: hidden; /* No scrolling allowed */
+    transition: background-color 5s ease-in-out; /* The slow fade to black */
+}
+
+/* When this class is added, the background fades to endless black */
+body.fade-to-black {
+    background-color: var(--bg-black);
+}
+
+/* Start Screen */
+.start-screen {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease;
+    z-index: 10;
+}
+
+#start-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Caveat', cursive;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+}
+
+#start-btn:hover {
+    opacity: 1;
+}
+
+/* Hidden Class for smooth transitions */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Final Canvas Layout */
+.final-canvas {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: opacity 3s ease;
+    padding-top: 5vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10vh;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    margin: 0;
+    font-family: 'Times New Roman', serif; /* Keeps the title formal */
+    opacity: 0.8;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    opacity: 0.5;
+    margin-top: 10px;
+}
+
+/* Synchronized Lyrics Container */
+.lyrics-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 50vh;
+}
+
+/* Default Lyric Style */
+.lyric-line {
+    position: absolute;
+    text-align: center;
+    width: 90%;
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+    font-size: 1.5rem;
+}
+
+/* The three visible states */
+.lyric-previous {
+    opacity: 0.3;
+    transform: translateY(-50px);
+    font-size: 1.8rem;
+}
+
+.lyric-current {
+    opacity: 1;
+    transform: translateY(0);
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.lyric-next {
+    opacity: 0.3;
+    transform: translateY(50px);
+    font-size: 1.8rem;
+}
