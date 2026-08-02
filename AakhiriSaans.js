@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { time: 154.4, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
         { time: 165.5, text: "Na ra na... na ra na... na ra na..." },
         { time: 171.0, text: "Na ra na... na ra na... na ra na..." },
-        { time: 178.4, text: "Na ra na... na ra na... na ra na..." }
+        { time: 178.4, text: "Na ra na... na ra na... na ra na..." },
     ];
 
     // 1. Pre-create the DOM elements for the thoughts
