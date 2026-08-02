@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const myThoughts = [
         // Verse 1
         { time: 0.3, text: "Na jaane kyun mujhse tu rehti khafa hai..." },
-        { time: 6.0, text: "Soch ke hamare kal ka..." },
+        { time: 5.8, text: "Soch ke hamare kal ka..." },
         { time: 11.5, text: "Aankhon mein tu aur dil mein wafa hai..." },
         { time: 16.8, text: "Sach yahi to hai is pal ka..." },
         
