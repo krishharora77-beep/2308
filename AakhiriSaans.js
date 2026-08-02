@@ -10,65 +10,52 @@ document.addEventListener("DOMContentLoaded", () => {
     // Note: Adjust these 'time' values (in seconds) to perfectly match the audio file!
     const myThoughts = [
         // Verse 1
-        { time: 2.0, text: "Na jaane kyun mujhse tu rehti khafa hai..." },
-        { time: 7.0, text: "Soch ke hamare kal ka..." },
-        { time: 12.0, text: "Aankhon mein tu aur dil mein wafa hai..." },
-        { time: 17.0, text: "Sach yahi to hai is pal ka..." },
+        { time: 0.4, text: "Na jaane kyun mujhse tu rehti khafa hai..." },
+        { time: 6.1, text: "Soch ke hamare kal ka..." },
+        { time: 11.6, text: "Aankhon mein tu aur dil mein wafa hai..." },
+        { time: 16.9, text: "Sach yahi to hai is pal ka..." },
         
         // Pre-Chorus
-        { time: 22.0, text: "Is duniya mein jo kuch bhi hai hua..." },
-        { time: 27.0, text: "Hua hai wo ki hum tum mile..." },
-        { time: 32.0, text: "Sau saalon mein badlega ye jahan..." },
-        { time: 37.0, text: "Na badlenge fir bhi tum aur main..." },
+        { time: 21.5, text: "Is duniya mein jo kuch bhi hai hua..." },
+        { time: 27.3, text: "Hua hai wo ki hum tum mile..." },
+        { time: 32.7, text: "Sau saalon mein badlega ye jahan..." },
+        { time: 38.3, text: "Na badlenge fir bhi tum aur main..." },
         
         // Chorus
-        { time: 42.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 48.0, text: "Na mile tu mujhe, to main duniya chhan loon..." },
-        { time: 54.0, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
-        { time: 60.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 44.1, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 49.6, text: "Na mile tu mujhe, to main duniya chhan loon..." },
+        { time: 55.1, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
+        { time: 60.6, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+
+        //Music 1
+        { time: 66.1, text: "..."}
         
         // Verse 2
-        { time: 66.0, text: "Socha saja loon ghar ko tu jo kal rahegi sang mein..." },
-        { time: 71.0, text: "Tumse churaya pal lagaaon main humare kal mein..." },
-        { time: 76.0, text: "Par tu khafa hai soche rehti na tu mere mann mein..." },
-        { time: 81.0, text: "Shayad yahan koi aur hai..." },
+        { time: 77.9, text: "Socha saja loon ghar ko tu jo kal rahegi sang mein..." },
+        { time: 83.4, text: "Tumse churaya pal lagaaon main humare kal mein..." },
+        { time: 88.9, text: "Par tu khafa hai soche rehti na tu mere mann mein..." },
+        { time: 94.5, text: "Shayad yahan koi aur hai..." },
         
         // Pre-Chorus 2
-        { time: 86.0, text: "Sau pariyan bhi ho mere saamne..." },
-        { time: 91.0, text: "Phir bhi sada tumko hi chunoon main..." },
-        { time: 96.0, text: "Sau saalon mein badlega ye jahan..." },
-        { time: 101.0, text: "Na badlenge fir bhi tum aur main..." },
+        { time: 97.7, text: "Sau pariyan bhi ho mere saamne..." },
+        { time: 99.2, text: "Phir bhi sada tumko hi chunoon main..." },
+        { time: 104.3, text: "Sau saalon mein badlega ye jahan..." },
+        { time: 109.7, text: "Na badlenge fir bhi tum aur main..." },
         
         // Chorus 2
-        { time: 106.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 112.0, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
-        { time: 118.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 124.0, text: "Na mile tu mujhe, to main duniya chhan loon..." },
-        { time: 130.0, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
-        { time: 136.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        
-        // Rap Verse (The Unsaid Thoughts)
-        { time: 142.0, text: "Kyun faasle hain darmiyaan, samajh nahi main pa raha..." },
-        { time: 145.0, text: "Paas aana chahta hoon, par thehar sa main jaa raha..." },
-        { time: 148.0, text: "Sochta hoon dimaag mein ek poori nayi dastaan..." },
-        { time: 151.0, text: "Par jab tu paas se guzre, kho deta hoon raasta..." },
-        { time: 154.0, text: "Khamoshiyon ne mere lafzon ko chupa liya..." },
-        { time: 157.0, text: "Bina kuch kahe maine sab kuch hai luta diya..." },
-        { time: 160.0, text: "Bas ek muskaan dekhi aur khud ko mana liya..." },
-        { time: 163.0, text: "Tere aage aake maine khud ko hi mita diya..." },
-        
-        // Bridge (The Fade to Black)
-        { time: 168.0, text: "Ab yahi hai safar ki aakhiri manzil meri..." },
-        { time: 173.0, text: "Is kaale andhere mein chhup jayegi mehfil meri..." },
-        { time: 178.0, text: "Khush rahe tu hamesha, dua yahi karta hoon..." },
-        { time: 183.0, text: "Apne in hisson ko in shabdon mein main rakhta hoon..." },
+        { time: 115.3, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 121.3, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
+        { time: 126.8, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 132.3, text: "Na mile tu mujhe, to main duniya chhan loon..." },
+        { time: 137.9, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
+        { time: 143.4, text: "Aakhiri saans ho, to bhi tera naam loon..." },
 
         // Final Chorus & Outro
-        { time: 188.0, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 194.0, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
-        { time: 200.0, text: "Na ra na... na ra na... na ra na..." },
-        { time: 206.0, text: "Na ra na... na ra na... na ra na..." },
-        { time: 212.0, text: "Na ra na... na ra na... na ra na..." }
+        { time: 148.9, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 154.4, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
+        { time: 165.5, text: "Na ra na... na ra na... na ra na..." },
+        { time: 171.0, text: "Na ra na... na ra na... na ra na..." },
+        { time: 178.4, text: "Na ra na... na ra na... na ra na..." }
     ];
 
     // 1. Pre-create the DOM elements for the thoughts
