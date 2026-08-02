@@ -100,8 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             sendBtn.disabled = true;
             sendBtn.innerHTML = "💜 Sending...";
 
-            try {
-
+           try {
                 await fetch(
                     "https://docs.google.com/forms/d/e/1FAIpQLSfT1tu8oXAPjRlPyV94So5ZfC9MApWZWUoUDC763Tgmvivt5A/formResponse",
                     {
@@ -111,10 +110,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 );
 
+                // The Magic Connection: Acknowledge and Redirect
+                sendBtn.innerHTML = "I got your words...";
+                
+                setTimeout(() => {
+                    // Fades to the final page after 2 seconds
+                    window.location.href = "AakhiriSaans.html"; 
+                }, 2000);
+
             } catch (e) {
                 console.log(e);
+                sendBtn.innerHTML = "Something went wrong, but I still got the feeling.";
             }
-
         }
         });
 
