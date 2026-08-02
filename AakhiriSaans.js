@@ -142,4 +142,14 @@ document.addEventListener("DOMContentLoaded", () => {
             lyricElements[currentIndex + 1].classList.add("lyric-next");
         }
     }
+
+// TEMPORARY SYNC HELPER - DELETE WHEN FINISHED
+    document.addEventListener('keydown', (event) => {
+        if (event.code === 'Space') {
+            // Prevents the spacebar from scrolling the page down
+            event.preventDefault(); 
+            console.log(`Current Time: ${audio.currentTime.toFixed(1)}`);
+        }
+    });
+// TILL HERE.....    
 });
