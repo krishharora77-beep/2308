@@ -106,7 +106,7 @@ body.fade-to-black {
 /* The three visible states */
 .lyric-previous {
     opacity: 0.3;
-    transform: translateY(-50px);
+    transform: translateY(-100px);
     font-size: 1.8rem;
 }
 
@@ -119,6 +119,6 @@ body.fade-to-black {
 
 .lyric-next {
     opacity: 0.3;
-    transform: translateY(50px);
+    transform: translateY(100px);
     font-size: 1.8rem;
 }
