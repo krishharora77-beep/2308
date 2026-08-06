@@ -138,5 +138,119 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(`Current Time: ${audio.currentTime.toFixed(1)}`);
         }
     });
-// TILL HERE.....    
+// TILL HERE.....
+
+/* =====================================================
+        FINAL LETTER ADD-ON
+===================================================== */
+
+const finalThoughts = [
+
+"This website Named '2308' wasn't something I made in a few days.",
+
+"I've been building it since May.",
+
+"Every page slowly became better than the previous one.",
+
+"Because I wanted it to.",
+
+"Maybe it still isn't perfect.",
+
+"But it's the most honest thing I've ever created.",
+
+"Thank you... Dear Tarisha,",
+
+"For unknowingly becoming the reason '2308'exists."
+
+];
+
+
+
+let finalStarted = false;
+
+
+
+audio.addEventListener("ended", () => {
+
+    if(finalStarted) return;
+
+    finalStarted = true;
+
+
+
+    setTimeout(startFinalLetter,3000);
+
+});
+
+
+
+function startFinalLetter(){
+
+    const box = document.getElementById("finalLetter");
+
+    const content = document.getElementById("letterContent");
+
+
+
+    box.classList.add("show");
+
+
+
+    let i = 0;
+
+
+
+    function nextLine(){
+
+
+
+        if(i >= finalThoughts.length){
+
+            return;
+
+        }
+
+
+
+        const line = document.createElement("div");
+
+
+
+        line.className = "letterLine";
+
+
+
+        line.innerHTML = finalThoughts[i];
+
+
+
+        content.appendChild(line);
+
+
+
+        requestAnimationFrame(()=>{
+
+            line.classList.add("visible");
+
+        });
+
+
+
+        i++;
+
+
+
+        setTimeout(nextLine,3500);
+
+
+
+    }
+
+
+
+    nextLine();
+
+}
+
+/* ===================================================== */
 });
