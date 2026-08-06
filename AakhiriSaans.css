@@ -122,3 +122,87 @@ body.fade-to-black {
     transform: translateY(100px);
     font-size: 1.8rem;
 }
+
+/* ===================================================
+   FINAL LETTER ADD-ON
+=================================================== */
+
+#finalLetter{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:min(82%,700px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    z-index:999;
+
+    text-align:left;
+
+    transition:opacity 2s ease;
+
+}
+
+#finalLetter.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+#letterTitle{
+
+    text-align:center;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:48px;
+
+    font-style:italic;
+
+    font-weight:500;
+
+    color:#ffffff;
+
+    margin-bottom:55px;
+
+    letter-spacing:2px;
+
+}
+
+.letterLine{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:28px;
+
+    line-height:2.1;
+
+    color:#ffd6ea;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:all 1.8s ease;
+
+    margin:22px 0;
+
+}
+
+.letterLine.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
