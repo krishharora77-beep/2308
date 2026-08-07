@@ -235,6 +235,30 @@ body.fade-to-black {
 
     margin:18px 0;
 
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.2) 20%,
+    #000 50%,
+    rgba(0,0,0,.2) 80%,
+    transparent 100%
+);
+
+mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,.2) 20%,
+    #000 50%,
+    rgba(0,0,0,.2) 80%,
+    transparent 100%
+);
+
+-webkit-mask-size: 100% 250%;
+mask-size: 100% 250%;
+
+-webkit-mask-position: 0 100%;
+mask-position: 0 100%;  
+
 }
 
 
@@ -244,5 +268,6 @@ body.fade-to-black {
     opacity:1;
 
     transform:translateY(0);
-
+-webkit-mask-position: 0 50%;
+mask-position: 0 50%;
 }
