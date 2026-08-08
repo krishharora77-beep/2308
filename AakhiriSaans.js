@@ -37,25 +37,25 @@ document.addEventListener("DOMContentLoaded", () => {
         { time: 94.4, text: "Shayad yahan koi aur hai..." },
         
         // Pre-Chorus 2
-        { time: 97.6, text: "Sau pariyan bhi ho mere saamne..." },
-        { time: 99.1, text: "Phir bhi sada tumko hi chunoon main..." },
-        { time: 104.1, text: "Sau saalon mein badlega ye jahan..." },
-        { time: 109.6, text: "Na badlenge fir bhi tum aur main..." },
+        { time: 99.2, text: "Sau pariyan bhi ho mere saamne..." },
+        { time: 104.4, text: "Phir bhi sada tumko hi chunoon main..." },
+        { time: 109.8, text: "Sau saalon mein badlega ye jahan..." },
+        { time: 115.1, text: "Na badlenge fir bhi tum aur main..." },
         
         // Chorus 2
-        { time: 115.2, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 121.2, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
-        { time: 126.7, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 132.2, text: "Na mile tu mujhe, to main duniya chhan loon..." },
-        { time: 137.8, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
-        { time: 143.3, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 121.3, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 126.8, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
+        { time: 132.4, text: "Aakhiri saans ho, to bhi tera naam loon..." },
+        { time: 137.9, text: "Na mile tu mujhe, to main duniya chhan loon..." },
+        { time: 143.4, text: "Jhooth bhi tu kahe, to main sach wo maan loon..." },
+        { time: 148.9, text: "Aakhiri saans ho, to bhi tera naam loon..." },
 
         // Final Chorus & Outro
-        { time: 148.7, text: "Aakhiri saans ho, to bhi tera naam loon..." },
-        { time: 154.3, text: "Saans bhi wo meri tujhse aadhi baant loon..." },
-        { time: 165.4, text: "Na ra na... na ra na... na ra na..." },
+        { time: 154.9, text: "Na ra na... na ra na... na ra na..." },
+        { time: 159.9, text: "Na ra na... na ra na... na ra na..." },
+        { time: 165.8, text: "Na ra na... na ra na... na ra na..." },
         { time: 170.8, text: "Na ra na... na ra na... na ra na..." },
-        { time: 178.3, text: "Na ra na... na ra na... na ra na..." },
+        { time: 177.0, text: "Na ra na... na ra na... na ra na..." },
     ];
 
     // 1. Pre-create the DOM elements for the thoughts
@@ -158,7 +158,7 @@ const finalThoughts = [
 
 "But it's the most honest thing I've ever created.",
 
-"Thank you... Dear Tarisha,",
+"Thank you...Tarisha,",
 
 "For unknowingly becoming the reason '2308'exists."
 
@@ -178,7 +178,7 @@ audio.addEventListener("ended", () => {
 
 
 
-    setTimeout(startFinalLetter,3000);
+    setTimeout(startFinalLetter,2400);
 
 });
 
