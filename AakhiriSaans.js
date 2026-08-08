@@ -204,10 +204,25 @@ function startFinalLetter(){
 
 
 
-        if(i >= finalThoughts.length){
+       if(i >= finalThoughts.length){
+            
+            // --- NEW ADD-ON STARTS HERE ---
+            setTimeout(() => {
+                const ultimateEnd = document.createElement("div");
+                ultimateEnd.id = "ultimate-end";
+                ultimateEnd.innerHTML = `
+                    <div class="ultimate-head">At The Very Last..</div>
+                    <div class="ultimate-phrase">Happiest Birthday Tarisha...</div>
+                `;
+                document.body.appendChild(ultimateEnd);
+                
+                setTimeout(() => {
+                    ultimateEnd.classList.add("show");
+                }, 50);
+            }, 8000); 
+            // --- NEW ADD-ON ENDS HERE ---
 
             return;
-
         }
 
 
