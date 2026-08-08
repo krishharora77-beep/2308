@@ -260,3 +260,44 @@ body.fade-to-black {
     -webkit-mask-position: 0 50%;
     mask-position: 0 50%;
 }
+
+/* ==========================================================
+        THE ULTIMATE ENDING
+========================================================== */
+#ultimate-end {
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    
+    /* A very slow, dramatic 4-second fade into black */
+    transition: opacity 4s ease-in-out;
+    z-index: 9999999; /* Ensures it covers the glass letter and background */
+    text-align: center;
+}
+
+#ultimate-end.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ultimate-head {
+    font-family: 'Caveat', cursive; /* The handwritten font for a personal touch */
+    font-size: 2rem;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.ultimate-phrase {
+    font-family: "Cormorant Garamond", serif; /* Matches your glass letter */
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: #ffd6ea; /* Soft pinkish-white text */
+    text-shadow: 0 0 20px rgba(237, 82, 155, 0.3); /* Gentle royal pink glow */
+}
