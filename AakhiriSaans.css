@@ -210,64 +210,53 @@ body.fade-to-black {
 }
 
 
-
 /* Letter Lines */
-
-.letterLine{
-
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:27px;
-
-    color:#ffd6ea;
-
-    line-height:2;
-
-    opacity:0;
-
-    transform:translateY(12px);
-
+.letterLine {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 27px;
+    color: #ffd6ea;
+    
+    /* Reduced line-height and margin so all 8 lines fit on screen */
+    line-height: 1.6;
+    margin: 10px 0; 
+    
+    opacity: 0;
+    transform: translateY(12px);
+    
+    /* Added the mask-position to the transition for the rolling effect */
     transition:
-
         opacity 1.8s ease,
+        transform 1.8s ease,
+        -webkit-mask-position 1.8s ease,
+        mask-position 1.8s ease;
 
-        transform 1.8s ease;
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0,0,0,.2) 20%,
+        #000 50%,
+        rgba(0,0,0,.2) 80%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0,0,0,.2) 20%,
+        #000 50%,
+        rgba(0,0,0,.2) 80%,
+        transparent 100%
+    );
 
-    margin:18px 0;
+    -webkit-mask-size: 100% 250%;
+    mask-size: 100% 250%;
 
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0,0,0,.2) 20%,
-    #000 50%,
-    rgba(0,0,0,.2) 80%,
-    transparent 100%
-);
-
-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0,0,0,.2) 20%,
-    #000 50%,
-    rgba(0,0,0,.2) 80%,
-    transparent 100%
-);
-
--webkit-mask-size: 100% 250%;
-mask-size: 100% 250%;
-
--webkit-mask-position: 0 100%;
-mask-position: 0 100%;  
-
+    -webkit-mask-position: 0 100%;
+    mask-position: 0 100%;  
 }
 
-
-
-.letterLine.visible{
-
-    opacity:1;
-
-    transform:translateY(0);
--webkit-mask-position: 0 50%;
-mask-position: 0 50%;
+.letterLine.visible {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-mask-position: 0 50%;
+    mask-position: 0 50%;
 }
