@@ -224,20 +224,14 @@ function startFinalLetter(){
 
 
 
-        content.appendChild(line);
+       content.appendChild(line);
 
-
-
-        requestAnimationFrame(()=>{
-
+        // A tiny 50ms delay forces the browser to play the CSS transition
+        setTimeout(() => {
             line.classList.add("visible");
-
-        });
-
-
+        }, 50);
 
         i++;
-
 
 
         setTimeout(nextLine,3500);
